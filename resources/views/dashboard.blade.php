@@ -14,6 +14,15 @@
                     </a>
                 </span>
             </div>
+            @if (session('message'))
+                <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+                    role="alert">
+                    <span class="font-medium">
+                        Success alert!
+                    </span>
+                    {{ session('message') }}
+                </div>
+            @endif
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h2 class="font-bold text-xl">
@@ -21,6 +30,12 @@
                     </h2>
                     <div class="pt-4">
                         @forelse ($articles as $articles)
+                            <div>
+                                <a href="{{ route('articles.edit', $article->slug) }}"
+                                    class="inline-flex text-md pb-6 pt-8 items-center py-2 leading-4 font-medium rounded-md text-orange-400 hover:text-orange-300 focus:outline-none transition ease-in-out duration-150 float-right">
+                                    Update
+                                </a>
+                            </div>
                             <div>
                                 <a href="{{ route('articles.show', $article->slug) }}">
                                     <h2
