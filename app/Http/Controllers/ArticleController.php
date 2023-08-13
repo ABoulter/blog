@@ -6,6 +6,7 @@ use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Category;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -14,6 +15,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ArticleController extends Controller
 {
+
+    use AuthorizesRequests;
+
+
+    public function __construct()
+    {
+        $this->authorizeResource(Article::class, 'article');
+    }
     /**
      * Display a listing of the resource.
      */
