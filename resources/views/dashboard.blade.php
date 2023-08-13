@@ -35,6 +35,12 @@
                                     class="inline-flex text-md pb-6 pt-8 items-center py-2 leading-4 font-medium rounded-md text-orange-400 hover:text-orange-300 focus:outline-none transition ease-in-out duration-150 float-right">
                                     Update
                                 </a>
+                                <form action="{{ route('articles.destroy'), $article->slug }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button
+                                        class="inline-flex text-md pb-6 pt-8 py-2 leading-4 font-medium text-red-400 hover:text-red-300 transition ease-in-out duration-150 float-right pr-3">Delete</button>
+                                </form>
                             </div>
                             <div>
                                 <a href="{{ route('articles.show', $article->slug) }}">

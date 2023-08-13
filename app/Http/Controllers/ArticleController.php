@@ -87,9 +87,11 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Article $article)
+    public function destroy(Article $article): RedirectResponse
     {
-        //
+        $article->delete();
+
+        return redirect(route('dashboard'))->with('message', 'Article deleted');
     }
 
     private function getFormData(): array
